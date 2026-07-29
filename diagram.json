@@ -1,0 +1,119 @@
+{
+  "version": 1,
+  "author": "Rafael dos Santos e Pedro loureiro Seglia",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "board-esp32-s3-devkitc-1",
+      "id": "esp",
+      "top": -38.58,
+      "left": -321.83,
+      "attrs": {}
+    },
+    { "type": "wokwi-lcd1602", "id": "lcd1", "top": -351.77, "left": -905.6, "attrs": {} },
+    { "type": "wokwi-potentiometer", "id": "pot1", "top": -260.5, "left": -1037, "attrs": {} },
+    { "type": "wokwi-membrane-keypad", "id": "keypad1", "top": -338, "left": -13.6, "attrs": {} },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": 13.4,
+      "left": 193.6,
+      "rotate": 90,
+      "attrs": { "color": "red", "flip": "1", "label": "Tranca" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r_pd1",
+      "top": 33.05,
+      "left": -1.4,
+      "rotate": 180,
+      "attrs": { "value": "1000" }
+    },
+    {
+      "type": "wokwi-photoresistor-sensor",
+      "id": "ldr1",
+      "top": -131.2,
+      "left": -594.4,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": -188.05,
+      "left": -720,
+      "attrs": { "value": "330" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r2",
+      "top": -149.65,
+      "left": -652.8,
+      "attrs": { "value": "1000" }
+    },
+    { "type": "wokwi-vcc", "id": "vcc1", "top": -248.84, "left": -940.8, "attrs": {} },
+    {
+      "type": "wokwi-resistor",
+      "id": "r3",
+      "top": -149.65,
+      "left": -960,
+      "attrs": { "value": "120" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "ldr1:VCC", "esp:3V3", "red", [ "v0" ] ],
+    [ "r_pd1:1", "led1:A", "green", [ "v0" ] ],
+    [ "r_pd1:2", "esp:42", "green", [ "v0", "h-181.2", "v-105.6" ] ],
+    [ "lcd1:VDD", "lcd1:A", "cyan", [ "v19.2", "h124.9" ] ],
+    [ "ldr1:AO", "esp:9", "white", [ "h19.2", "v172.1" ] ],
+    [ "ldr1:VCC", "esp:3V3.1", "red", [ "h0" ] ],
+    [ "lcd1:K", "r1:1", "green", [ "v0" ] ],
+    [ "r1:2", "esp:GND.2", "black", [ "v19.2", "h738" ] ],
+    [ "r1:2", "r2:1", "green", [ "v0" ] ],
+    [ "r2:2", "esp:4", "green", [ "v0", "h258", "v115.2", "h0", "v19.2" ] ],
+    [ "ldr1:GND", "esp:GND.2", "black", [ "h192", "v18.8" ] ],
+    [ "lcd1:D7", "esp:15", "gray", [ "v105.6", "h144.3", "v67.2", "h172.8", "v96" ] ],
+    [ "lcd1:D6", "esp:16", "purple", [ "v115.2", "h144.2", "v67.2", "h172.8", "v105.6" ] ],
+    [ "lcd1:D5", "esp:17", "blue", [ "v124.8", "h144.1", "v67.2", "h172.8", "v105.6" ] ],
+    [ "lcd1:D4", "esp:18", "green", [ "v134.4", "h144", "v67.2", "h172.8", "v105.6" ] ],
+    [
+      "lcd1:E",
+      "esp:8",
+      "yellow",
+      [ "v38.4", "h38.4", "v105.6", "h144", "v67.2", "h172.8", "v105.6" ]
+    ],
+    [
+      "lcd1:RW",
+      "esp:GND.1",
+      "black",
+      [ "v48", "h38.3", "v105.6", "h144", "v67.2", "h172.8", "v105.6", "h67.2", "v86.4" ]
+    ],
+    [ "lcd1:VSS", "esp:GND.2", "black", [ "v57.6", "h201.6", "v9.6", "h441.6", "v9.6" ] ],
+    [ "vcc1:VCC", "lcd1:VDD", "cyan", [ "v19.2", "h96" ] ],
+    [
+      "esp:3",
+      "lcd1:RS",
+      "#8f4814",
+      [ "v0", "h-172.85", "v-96", "h-172.8", "v-67.2", "h-144", "v-105.6", "h-38.4", "v-57.6" ]
+    ],
+    [ "pot1:VCC", "r3:1", "red", [ "v28.8", "h66.4" ] ],
+    [ "r3:2", "vcc1:VCC", "green", [ "v-28.8", "h-30" ] ],
+    [
+      "pot1:GND",
+      "esp:GND.1",
+      "black",
+      [ "v76.8", "h182.4", "v76.8", "h153.6", "v67.2", "h172.8", "v96", "h76.8", "v48" ]
+    ],
+    [ "lcd1:V0", "pot1:SIG", "green", [ "v86.4", "h-144.3" ] ],
+    [ "keypad1:C1", "esp:41", "green", [ "v0" ] ],
+    [ "keypad1:C2", "esp:40", "green", [ "v0" ] ],
+    [ "keypad1:C3", "esp:39", "green", [ "v0" ] ],
+    [ "keypad1:R1", "esp:35", "green", [ "v0" ] ],
+    [ "keypad1:R2", "esp:37", "green", [ "v0" ] ],
+    [ "keypad1:R3", "esp:36", "green", [ "v0" ] ],
+    [ "keypad1:R4", "esp:38", "green", [ "v0" ] ],
+    [ "esp:GND.3", "led1:C", "black", [ "h0" ] ]
+  ],
+  "dependencies": {}
+}
