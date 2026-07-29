@@ -1,4 +1,4 @@
-# Sistema-de-Controle-de-Acesso-com-Ilumina-o-Adaptativa
+# Sistema-de-Controle-de-Acesso-com-Iluminação-Adaptativa
 
 Projeto final desenvolvido para a disciplina de **Sistemas Embarcados I (ELE15942)**, referente ao semestre letivo **2025/2**. 
 
